@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    notebook:
+        image: blackplane/jupyternb
+        build: .
+        ports:
+            - ${JUPYTERPORT}:8888
+        volumes:
+            - ${NOTEBOOKDIR}:${NOTEBOOKROOT}
+            - ${DATADIR}:/home/jupyter/notebooks/Data
+            - ${CRYPTONOTEBOOK}:${NOTEBOOKROOT}/crypto
+            - ${SYNIDNOTEBOOK}:${NOTEBOOKROOT}/synid
+        
+
+
