@@ -34,4 +34,7 @@ pandas_datareader
 yahoo_fin
 yfinance
 jupyter_http_over_ws
+tqdm
+codetiming
+pgmpy
 #tensorflow

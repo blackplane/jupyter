@@ -4,5 +4,7 @@
 
 #$SPARK_HOME/sbin/start-master.sh
 
-jupyter notebook --ip=0.0.0.0 --NotebookApp.token='' --no-browser
+jupyter notebook --NotebookApp.token='' \
+     --notebook-dir=/home/jupyter/notebooks --ip='*' --port=8888 \
+     --no-browser --allow-root
 
