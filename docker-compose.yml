@@ -11,6 +11,8 @@ services:
             - ${DATADIR}:/home/jupyter/notebooks/Data
             - ${CRYPTONOTEBOOK}:${NOTEBOOKROOT}/crypto
             - ${SYNIDNOTEBOOK}:${NOTEBOOKROOT}/synid
-        
 
-
+    spamassasin:
+        image: blackplane/spamassasin:latest
+        ports:
+          - ${SPAMASSASIN}:783

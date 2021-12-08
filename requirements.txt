@@ -11,6 +11,7 @@ matplotlib
 seaborn
 pyarrow
 statsmodels
+decorator==4.3
 ts-flint
 gym
 pyentrp
@@ -38,3 +39,4 @@ tqdm
 codetiming
 pgmpy
 #tensorflow
+aiospamc
