@@ -1,0 +1,8 @@
+startup_message off
+
+screen -t "Mount postgres-data" minikube mount ~/Data/postgres:/postgres-data
+split
+focus
+screen -t "Mount ipynb notebook folder"  minikube mount ~/Source/notebooks:/notebooks
+focus
+

@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyter-notebooks
+  labels:
+    app: jupyternb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyternb
+  template:
+    metadata:
+      labels:
+        app: jupyternb
+    spec:
+      containers:
+      - name: jupyter
+        image: blackplane/jupyternb
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8888
+        volumeMounts:
+        - mountPath: /home/jupyter/notebooks
+          name: notebook-volume
+      - name: spamassasin
+        image: blackplane/spamassasin
+        ports:
+        - containerPort: 783
+      - name: postgres
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /postgres-data
+          name: postgres-volume
+        env:
+        - name: POSTGRES_USER
+          value: "psqluser"
+        - name: POSTGRES_PASSWORD
+          value: "bestpass"
+        - name: POSTGRES_DB
+          value: "db"
+      # testing volumes below
+      volumes:
+      - name: notebook-volume
+        hostPath:
+          path: /notebooks
+          type: Directory
+      - name: postgres-volume
+        hostPath:
+          path: /postgres-data
+          type: Directory
+
