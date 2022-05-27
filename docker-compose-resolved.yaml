@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  notebook:
+    image: blackplane/jupyternb
+    ports:
+    - 8899:8888
+  spamassasin:
+    image: blackplane/spamassasin:latest
+    ports:
+    - mode: ingress
+      target: 783
+      published: 783
+      protocol: tcp

@@ -1,8 +1,9 @@
-FROM continuumio/anaconda3
+FROM continuumio/anaconda3:latest
 
 
 RUN conda install jupyter -y --quiet && \
-    mkdir -p /home/jupyter/notebooks 
+    mkdir -p /home/jupyter/notebooks && \
+    conda install pandas scipy numpy matplotlib seaborn statsmodels -y --quiet
 
 # Install Tini
 RUN wget --quiet https://github.com/krallin/tini/releases/download/v0.18.0/tini && \
@@ -22,7 +23,7 @@ ADD ./jupyter_notebook_config.py /home/jupyter/.jupyter/jupyter_notebook_config.
 ADD ./requirements.txt requirements.txt
 ADD ./artifactory-requirememts.txt artifactory-requirememts.txt
 RUN pip3 install -r requirements.txt
-#RUN pip3 install -r artifactory-requirememts.txt
+RUN pip3 install -r artifactory-requirememts.txt
 
 
 # Set the container working directory to the user home #folder
